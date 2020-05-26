@@ -1,0 +1,8 @@
+AWS_BUCKET_NAME = "chumnog"
+MOUNT_NAME = "s3"
+dbutils.fs.mount("s3a://%s" % AWS_BUCKET_NAME, "/mnt/%s" % MOUNT_NAME)
+display(dbutils.fs.ls("/mnt/%s" % MOUNT_NAME))
+
+x = datetime.datetime.now()
+with open ("/mnt/s3/dolittle.txt", "tw+") as f:
+    f.write(x.strftime("%y-%m-%d-%H%M%S"))
